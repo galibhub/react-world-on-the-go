@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './country.css';
 
-const Country = ({ country }) => {
+const Country = ({ country,handleVisitedCountries }) => {
     // console.log(country.name.common);
 
 
@@ -21,15 +21,16 @@ const Country = ({ country }) => {
         // setVisited(visited ? false : true)
 
         //==way-3
-        setVisited(!visited ? true : false)
+        setVisited(!visited ? true : false);
+        handleVisitedCountries(country);
 
 
     }
 
 
     return (
-        // <div className='country' >  
-        <div className={`country ${visited && 'country-visited'}`}>  // for handelling dynamically visitated country
+        // <div className='country' >  for handelling dynamically visitated country
+        <div className={`country ${visited && 'country-visited'}`}>  
             <h3>Name: {country.name.common}</h3>
             <p>Population: {country.population.population}</p>
             <img src={country.flags.flags.png} alt={country.flags.flags.alt} />
